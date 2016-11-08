@@ -1,49 +1,11 @@
-# Bio-Formats
+# OME metakit
 
-[![Build Status](https://travis-ci.org/openmicroscopy/bioformats.png)](http://travis-ci.org/openmicroscopy/bioformats)
-
-Bio-Formats is a standalone Java library for reading and writing life sciences
-image file formats. It is capable of parsing both pixels and metadata for a
-large number of formats, as well as writing to several formats.
-
+[![Build Status](https://travis-ci.org/ome/ome-metakit.png)](http://travis-ci.org/ome/ome-metakit)
 
 Purpose
 -------
 
-Bio-Formats' primary purpose is to convert proprietary microscopy data into 
-an open standard called the OME data model, particularly into the OME-TIFF 
-file format. See the [statement of purpose](http://www.openmicroscopy.org/site/support/bio-formats/about/index.html) 
-for a thorough explanation and rationale.
-
-
-Supported formats
------------------
-
-Bio-Formats supports [more than a hundred file
-formats](http://www.openmicroscopy.org/site/support/bio-formats/supported-formats.html).
-
-
-For users
----------
-
-[Many software
-packages](http://www.openmicroscopy.org/site/support/bio-formats/users/index.html)
-use Bio-Formats to read and write microscopy formats.
-
-
-For developers
---------------
-
-You can use Bio-Formats to easily [support these formats in your
-software](http://www.openmicroscopy.org/site/support/bio-formats/developers/java-library.html).
-
-
-More information
-----------------
-
-For more information, see the [Bio-Formats web
-site](http://www.openmicroscopy.org/site/products/bio-formats).
-
+A library for reading Metakit database files.
 
 Pull request testing
 --------------------
