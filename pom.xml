@@ -13,7 +13,10 @@
   <description>A library for reading Metakit database files.</description>
   <url>http://www.openmicroscopy.org/site/products/bio-formats</url>
   <inceptionYear>2005</inceptionYear>
-
+  <organization>
+    <name>Open Microscopy Environment</name>
+    <url>http://www.openmicroscopy.org/</url>
+  </organization>
   <licenses>
     <license>
       <name>GNU General Public License v2+</name>
@@ -21,6 +24,97 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
+
+  <developers>
+    <developer>
+      <name>The OME Team</name>
+      <email>ome-devel@lists.openmicroscopy.org.uk</email>
+    </developer>
+  </developers>
+  <contributors>
+    <contributor><name>Sébastien Besson</name></contributor>
+    <contributor><name>Jean-Marie Burel</name></contributor>
+    <contributor><name>Mark Carroll</name></contributor>
+    <contributor><name>Helen Flynn</name></contributor>
+    <contributor><name>David Gault</name></contributor>
+    <contributor><name>Simone Leo</name></contributor>
+    <contributor><name>Roger Leigh</name></contributor>
+    <contributor><name>Melissa Linkert</name></contributor>
+    <contributor><name>Josh Moore</name></contributor>
+    <contributor><name>Andrew Patterson</name></contributor>
+    <contributor><name>Curtis Rueden</name></contributor>
+    <contributor><name>Christoph Sommer</name></contributor>
+    <contributor><name>Bjoern Thiel</name></contributor>
+  </contributors>
+
+  <mailingLists>
+    <mailingList>
+      <name>OME-users</name>
+      <subscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-users/</subscribe>
+      <unsubscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-users/</unsubscribe>
+      <post>ome-users@lists.openmicroscopy.org.uk</post>
+      <archive>http://lists.openmicroscopy.org.uk/pipermail/ome-users/</archive>
+    </mailingList>
+    <mailingList>
+      <name>OME-devel</name>
+      <subscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-devel/</subscribe>
+      <unsubscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-devel/</unsubscribe>
+      <post>ome-devel@lists.openmicroscopy.org.uk</post>
+      <archive>http://lists.openmicroscopy.org.uk/pipermail/ome-devel/</archive>
+    </mailingList>
+  </mailingLists>
+
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
+
+  <scm>
+    <connection>scm:git:https://github.com/ome/ome-common-java</connection>
+    <developerConnection>scm:git:git@github.com:ome/ome-common-java</developerConnection>
+    <tag>HEAD</tag>
+    <url>http://github.com/ome/ome-common-java</url>
+  </scm>
+  <issueManagement>
+    <system>Trac</system>
+    <url>https://trac.openmicroscopy.org/ome</url>
+  </issueManagement>
+  <ciManagement>
+    <system>Jenkins</system>
+    <url>https://ci.openmicroscopy.org/</url>
+  </ciManagement>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    </snapshotRepository>
+    <repository>
+      <id>ossrh</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <properties>
+    <!-- If two artifacts on the classpath use two different versions of the
+         same dependency, behavior is inconsistent at best, and often broken.
+         The following properties facilitate consistency of dependency
+         versions between various projects in the SciJava software stack.
+         When possible, we advise using the relevant groupId and version
+         properties for your dependencies rather than hardcoding them. -->
+
+    <logback.version>1.1.1</logback.version>
+    <testng.version>6.8</testng.version>
+    <ome-common.version>5.3.1</ome-common.version>
+
+    <!-- NB: Avoid platform encoding warning when copying resources. -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <!-- NB: Specify formatting of the maven.build.timestamp property. -->
+    <maven.build.timestamp.format>d MMMMM yyyy</maven.build.timestamp.format>
+
+    <!-- NB: Override argLine property for extra maven-surefire-plugin args. -->
+    <argLine/>
+  </properties>
 
   <dependencies>
     <dependency>
@@ -48,29 +142,6 @@
       <version>${logback.version}</version>
     </dependency>
   </dependencies>
-
-  <properties>
-    <!-- If two artifacts on the classpath use two different versions of the
-         same dependency, behavior is inconsistent at best, and often broken.
-         The following properties facilitate consistency of dependency
-         versions between various projects in the SciJava software stack.
-         When possible, we advise using the relevant groupId and version
-         properties for your dependencies rather than hardcoding them. -->
-
-    <logback.version>1.1.1</logback.version>
-    <testng.version>6.8</testng.version>
-    <ome-common.version>5.3.1</ome-common.version>
-
-    <!-- NB: Avoid platform encoding warning when copying resources. -->
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-
-    <!-- NB: Specify formatting of the maven.build.timestamp property. -->
-    <maven.build.timestamp.format>d MMMMM yyyy</maven.build.timestamp.format>
-
-    <!-- NB: Override argLine property for extra maven-surefire-plugin args. -->
-    <argLine/>
-  </properties>
 
   <build>
     <!-- It is nice for "mvn" with no arguments to do something reasonable. -->
@@ -363,119 +434,4 @@
       </plugin>
     </plugins>
   </reporting>
-
-  <prerequisites>
-    <maven>3.0</maven>
-  </prerequisites>
-
-  <organization>
-    <name>Open Microscopy Environment</name>
-    <url>http://www.openmicroscopy.org/</url>
-  </organization>
-
-  <issueManagement>
-    <system>Trac</system>
-    <url>https://trac.openmicroscopy.org/ome</url>
-  </issueManagement>
-
-  <ciManagement>
-    <system>Jenkins</system>
-    <url>https://ci.openmicroscopy.org/</url>
-  </ciManagement>
-
-  <mailingLists>
-    <mailingList>
-      <name>OME-users</name>
-      <subscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-users/</subscribe>
-      <unsubscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-users/</unsubscribe>
-      <post>ome-users@lists.openmicroscopy.org.uk</post>
-      <archive>http://lists.openmicroscopy.org.uk/pipermail/ome-users/</archive>
-    </mailingList>
-    <mailingList>
-      <name>OME-devel</name>
-      <subscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-devel/</subscribe>
-      <unsubscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-devel/</unsubscribe>
-      <post>ome-devel@lists.openmicroscopy.org.uk</post>
-      <archive>http://lists.openmicroscopy.org.uk/pipermail/ome-devel/</archive>
-    </mailingList>
-  </mailingLists>
-
-  <scm>
-    <connection>scm:git:https://github.com/ome/ome-common-java</connection>
-    <developerConnection>scm:git:git@github.com:ome/ome-common-java</developerConnection>
-    <tag>HEAD</tag>
-    <url>http://github.com/ome/ome-common-java</url>
-  </scm>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>central</id>
-      <name>Central Repository</name>
-      <url>http://repo.maven.apache.org/maven2</url>
-      <layout>default</layout>
-    </pluginRepository>
-  </pluginRepositories>
-
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
-
-  <developers>
-    <developer>
-      <id>hinerm</id>
-      <name>Mark Hiner</name>
-      <email>hinerm@gmail.edu</email>
-      <url>http://developer.imagej.net/users/hinerm</url>
-      <organization>UW-Madison LOCI</organization>
-      <organizationUrl>http://loci.wisc.edu/</organizationUrl>
-      <roles>
-        <role>architect</role>
-        <role>developer</role>
-      </roles>
-      <timezone>-6</timezone>
-      <properties>
-        <picUrl>http://developer.imagej.net/files/imagej/profile-pictures/Mark.jpg?1305649677</picUrl>
-      </properties>
-    </developer>
-    <developer>
-      <id>melissa</id>
-      <name>Melissa Linkert</name>
-      <email>melissa@glencoesoftware.com</email>
-      <url>http://openmicroscopy.org/site/about/development-teams/glencoe-software</url>
-      <organization>Glencoe Software</organization>
-      <organizationUrl>http://glencoesoftware.com/</organizationUrl>
-      <roles>
-        <role>architect</role>
-        <role>developer</role>
-      </roles>
-      <timezone>-6</timezone>
-      <properties>
-        <picUrl>http://openmicroscopy.org/site/about/development-teams/glencoe-software/melissalinkert.png</picUrl>
-      </properties>
-    </developer>
-    <developer>
-      <id>curtis</id>
-      <name>Curtis Rueden</name>
-      <email>ctrueden@wisc.edu</email>
-      <url>http://loci.wisc.edu/people/curtis-rueden</url>
-      <organization>UW-Madison LOCI</organization>
-      <organizationUrl>http://loci.wisc.edu/</organizationUrl>
-      <roles>
-        <role>architect</role>
-        <role>developer</role>
-      </roles>
-      <timezone>-6</timezone>
-      <properties>
-        <picUrl>http://loci.wisc.edu/files/loci/images/people/curtis-2010.jpg</picUrl>
-      </properties>
-    </developer>
-  </developers>
-
 </project>
