@@ -1,6 +1,6 @@
 # OME metakit
 
-[![Build Status](https://travis-ci.org/ome/ome-metakit.png)](http://travis-ci.org/ome/ome-metakit)
+[![Build Status](https://github.com/ome/ome-metakit/workflows/Maven/badge.svg)](https://github.com/ome/ome-metakit/actions)
 [![Maven Central](https://img.shields.io/maven-central/v/org.openmicroscopy/metakit.svg)](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22org.openmicroscopy%22%20AND%20a%3A%22metakit%22)
 [![Javadocs](http://javadoc.io/badge/org.openmicroscopy/metakit.svg)](http://javadoc.io/doc/org.openmicroscopy/metakit)
 
