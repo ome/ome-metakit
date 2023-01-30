@@ -102,7 +102,7 @@
          properties for your dependencies rather than hardcoding them. -->
 
     <logback.version>1.2.9</logback.version>
-    <testng.version>6.8</testng.version>
+    <testng.version>7.7.0</testng.version>
     <ome-common.version>6.0.9</ome-common.version>
 
     <!-- NB: Avoid platform encoding warning when copying resources. -->
