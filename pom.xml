@@ -11,16 +11,16 @@
 
   <name>Metakit</name>
   <description>A library for reading Metakit database files.</description>
-  <url>http://www.openmicroscopy.org/site/products/bio-formats</url>
+  <url>https://www.openmicroscopy.org/bio-formats</url>
   <inceptionYear>2005</inceptionYear>
   <organization>
     <name>Open Microscopy Environment</name>
-    <url>http://www.openmicroscopy.org/</url>
+    <url>https://www.openmicroscopy.org/</url>
   </organization>
   <licenses>
     <license>
       <name>GNU General Public License v2+</name>
-      <url>http://www.gnu.org/licenses/gpl-2.0.txt</url>
+      <url>https://www.gnu.org/licenses/gpl-2.0.txt</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -28,7 +28,7 @@
   <developers>
     <developer>
       <name>The OME Team</name>
-      <email>ome-devel@lists.openmicroscopy.org.uk</email>
+      <url>https://www.openmicroscopy.org/teams/</url>
     </developer>
   </developers>
   <contributors>
@@ -47,51 +47,24 @@
     <contributor><name>Bjoern Thiel</name></contributor>
   </contributors>
 
-  <mailingLists>
-    <mailingList>
-      <name>OME-users</name>
-      <subscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-users/</subscribe>
-      <unsubscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-users/</unsubscribe>
-      <post>ome-users@lists.openmicroscopy.org.uk</post>
-      <archive>http://lists.openmicroscopy.org.uk/pipermail/ome-users/</archive>
-    </mailingList>
-    <mailingList>
-      <name>OME-devel</name>
-      <subscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-devel/</subscribe>
-      <unsubscribe>http://lists.openmicroscopy.org.uk/mailman/listinfo/ome-devel/</unsubscribe>
-      <post>ome-devel@lists.openmicroscopy.org.uk</post>
-      <archive>http://lists.openmicroscopy.org.uk/pipermail/ome-devel/</archive>
-    </mailingList>
-  </mailingLists>
-
   <prerequisites>
     <maven>3.0.5</maven>
   </prerequisites>
 
   <scm>
-    <connection>scm:git:https://github.com/ome/ome-common-java</connection>
-    <developerConnection>scm:git:git@github.com:ome/ome-common-java</developerConnection>
+    <connection>scm:git:https://github.com/ome/ome-metakit</connection>
+    <developerConnection>scm:git:git@github.com:ome/ome-metakit</developerConnection>
     <tag>HEAD</tag>
-    <url>http://github.com/ome/ome-common-java</url>
+    <url>https://github.com/ome/ome-metakit</url>
   </scm>
   <issueManagement>
-    <system>Trac</system>
-    <url>https://trac.openmicroscopy.org/ome</url>
+    <system>GitHub</system>
+    <url>https://github.com/ome/ome-metakit/issues</url>
   </issueManagement>
   <ciManagement>
-    <system>Jenkins</system>
-    <url>https://ci.openmicroscopy.org/</url>
+    <system>GitHub</system>
+    <url>https://github.com/ome/ome-metakit/actions</url>
   </ciManagement>
-  <distributionManagement>
-    <snapshotRepository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-    </snapshotRepository>
-    <repository>
-      <id>ossrh</id>
-      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-    </repository>
-  </distributionManagement>
 
   <properties>
     <!-- If two artifacts on the classpath use two different versions of the
@@ -102,7 +75,7 @@
          properties for your dependencies rather than hardcoding them. -->
 
     <logback.version>1.3.15</logback.version>
-    <ome-common.version>6.0.25</ome-common.version>
+    <ome-common.version>6.0.26</ome-common.version>
 
     <!-- NB: Avoid platform encoding warning when copying resources. -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -160,11 +133,12 @@
       <plugin>
 	<groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.7.0</version>
+        <version>3.14.0</version>
         <!-- Require the Java 8 platform. -->
         <configuration>
-          <source>1.8</source>
-          <target>1.8</target>
+          <source>8</source>
+          <target>8</target>
+          <release>8</release>
         </configuration>
       </plugin>
 
@@ -366,24 +340,11 @@
       <id>release</id>
       <build>
         <plugins>
-          <!-- Stage releases with nexus -->
-          <plugin>
-            <groupId>org.sonatype.plugins</groupId>
-            <artifactId>nexus-staging-maven-plugin</artifactId>
-            <version>1.6.8</version>
-            <extensions>true</extensions>
-            <configuration>
-              <serverId>ossrh</serverId>
-              <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-              <autoReleaseAfterClose>false</autoReleaseAfterClose>
-            </configuration>
-          </plugin>
-
           <!-- gpg release signing -->
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>3.2.7</version>
             <executions>
               <execution>
                 <id>sign-artifacts</id>
@@ -393,6 +354,17 @@
                 </goals>
               </execution>
             </executions>
+          </plugin>
+
+          <plugin>
+            <groupId>org.sonatype.central</groupId>
+            <artifactId>central-publishing-maven-plugin</artifactId>
+            <version>0.8.0</version>
+            <extensions>true</extensions>
+            <configuration>
+              <publishingServerId>central</publishingServerId>
+              <tokenAuth>true</tokenAuth>
+            </configuration>
           </plugin>
         </plugins>
       </build>
