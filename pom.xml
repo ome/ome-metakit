@@ -74,7 +74,7 @@
          When possible, we advise using the relevant groupId and version
          properties for your dependencies rather than hardcoding them. -->
 
-    <logback.version>1.5.34</logback.version>
+    <logback.version>1.5.35</logback.version>
     <ome-common.version>6.3.0</ome-common.version>
     <testng.version>7.9.0</testng.version>
 
